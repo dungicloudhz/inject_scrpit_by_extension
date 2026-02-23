@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { width: 250px; font-family: Arial; padding: 10px; }
+    input { width: 100%; margin-bottom: 8px; padding: 5px; }
+    button { width: 100%; padding: 8px; }
+    #status { margin-top: 10px; color: green; }
+  </style>
+</head>
+<body>
+
+  <h3>Advanced Export</h3>
+
+  <input id="filename" placeholder="Tên file (không cần .csv)">
+  <input id="keyword" placeholder="Chỉ xuất link chứa từ khóa">
+
+  <button id="exportBtn">Export CSV</button>
+
+  <div id="status"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Advanced Data Extractor",
+  "version": "2.1.0",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

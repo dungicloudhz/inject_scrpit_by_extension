@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Shopee Affiliate Scraper",
+  "version": "3.0.0",
+  "description": "Thu thập thông tin sản phẩm từ Shopee Affiliate",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "storage",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://shopee.vn/*",
+    "https://affiliate.shopee.vn/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Shopee Affiliate Scraper"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

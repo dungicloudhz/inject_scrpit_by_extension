@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopee Affiliate Scraper</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-icon">S</div>
+      <div class="header-text">
+        <h1>Shopee Affiliate Scraper</h1>
+        <p>Thu thập thông tin sản phẩm từ cửa hàng</p>
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div id="status" class="status-bar">Sẵn sàng — Mở trang Hoa hồng Sản phẩm trên affiliate.shopee.vn</div>
+
+    <!-- Listing Mode Controls -->
+    <div id="listingControls" class="card hidden">
+      <div class="card-label">Quét hàng loạt</div>
+      <div class="listing-input-row">
+        <label for="listingPages" class="listing-label">Số trang listing cần quét:</label>
+        <input type="number" id="listingPages" class="listing-input" min="1" max="100" value="1">
+      </div>
+    </div>
+
+    <!-- Shopee Offer Category Controls -->
+    <div id="categoryControls" class="card hidden">
+      <div class="card-label">Chọn ngành hàng cần quét</div>
+      <div id="categoryLoading" class="category-loading">Đang tải danh sách ngành hàng...</div>
+      <div id="categoryList" class="category-list hidden">
+        <label class="cb-item cb-select-all">
+          <input type="checkbox" id="categorySelectAll" checked>
+          <span class="cb-check"></span>
+          <span class="cb-text cb-text-bold">Chọn tất cả ngành hàng</span>
+        </label>
+        <div id="categoryCheckboxes"></div>
+      </div>
+    </div>
+
+    <!-- Shop Info -->
+    <div id="shopInfo" class="card hidden">
+      <div class="card-label">Cửa hàng</div>
+      <div id="shopName" class="card-value">-</div>
+    </div>
+
+    <!-- Options: Checkboxes -->
+    <div class="card">
+      <div class="card-label">Chọn thông tin cần lấy:</div>
+      <div class="checkbox-grid">
+        <label class="cb-item">
+          <input type="checkbox" id="opt_name" checked>
+          <span class="cb-check"></span>
+          <span class="cb-text">Tên sản phẩm</span>
+        </label>
+        <label class="cb-item">
+          <input type="checkbox" id="opt_shop" checked>
+          <span class="cb-check"></span>
+          <span class="cb-text">Tên cửa hàng</span>
+        </label>
+        <label class="cb-item">
+          <input type="checkbox" id="opt_price" checked>
+          <span class="cb-check"></span>
+          <span class="cb-text">Giá tiền</span>
+        </label>
+        <label class="cb-item">
+          <input type="checkbox" id="opt_commission" checked>
+          <span class="cb-check"></span>
+          <span class="cb-text">Hoa hồng Xtra</span>
+        </label>
+        <label class="cb-item">
+          <input type="checkbox" id="opt_percent" checked>
+          <span class="cb-check"></span>
+          <span class="cb-text">% Hoa hồng</span>
+        </label>
+        <label class="cb-item">
+          <input type="checkbox" id="opt_sales" checked>
+          <span class="cb-check"></span>
+          <span class="cb-text">Lượt bán/tháng</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div id="progressSection" class="card hidden">
+      <div id="batchProgress" class="hidden">
+        <div class="progress-label-row">
+          <span id="batchLabel">Trang listing 0/0</span>
+          <span id="productLabel">Sản phẩm 0/0</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="batchProgressFill"></div>
+        </div>
+        <div id="batchText" class="progress-text">Đang xử lý...</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div id="progressText" class="progress-text">Trang 0/0 — 0 sản phẩm</div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button id="startBtn" class="btn btn-primary">
+        &#9654; Bắt đầu thu thập
+      </button>
+      <button id="stopBtn" class="btn btn-stop hidden">
+        &#9632; Dừng lại
+      </button>
+      <button id="downloadBtn" class="btn btn-download hidden">
+        &#8681; Tải file Excel
+      </button>
+    </div>
+
+    <!-- Result Summary -->
+    <div id="resultSummary" class="result-card hidden">
+      <div class="result-item">
+        <div class="result-num" id="resultCount">0</div>
+        <div class="result-label">Sản phẩm</div>
+      </div>
+      <div class="result-divider"></div>
+      <div class="result-item">
+        <div class="result-num" id="resultPages">0</div>
+        <div class="result-label">Trang</div>
+      </div>
+      <div class="result-divider" id="resultDivider2" class="hidden"></div>
+      <div class="result-item" id="resultFilesSection" class="hidden">
+        <div class="result-num" id="resultFiles">0</div>
+        <div class="result-label">File Excel</div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div id="error" class="error-box hidden"></div>
+  </div>
+
+  <script src="xlsx-writer.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
