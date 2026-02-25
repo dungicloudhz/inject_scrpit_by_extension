@@ -204,3 +204,56 @@ Bạn vừa xây:
 - Full automation flow
 
 # Phân tích chuyên sâu
+## 1. Vì sao cần retry?
+**Một số website**:
+- Load chậm
+- Load theo batch
+- Load random delay
+
+*Nếu scrollHeight khổng đổi 1 lần chưa chắc là hết dữ liệu.*
+*Retry giúp tránh dừng xớm.*
+
+## 2. Vì sao dùng scrollHeight?
+```js
+document.body.scrollHeight
+```
+*Là cách đơn giản nhất để detect (phát hiện) thêm content.*
+
+## 3. Đây chưa phải engine mạnh nhất
+Version mạnh hơn sẽ:
+- Dùng MutationObserver
+- Dùng IntersectionObserver
+- Detect spinner loading
+- Detect API call
+- Smart stop condition
+
+# Nâng cấp Level 4 lên PRO
+AutoScrollEngine nâng cao:
+```js
+async function smartScroll() {
+  let previousCount = 0;
+  for (let i = 0; i < 50; i++) {
+    window.scrollTo(0, document.body.scrollHeight);
+
+    await wait(2000);
+
+    const currentCount = document.querySelectorAll("h2").length;
+    if (currentCount === previousCount) {
+      break;
+    }
+    previousCount = currentCount;
+  }
+}
+```
+*Stop dựa vào số lượng item thay vì scrollHeight.*
+*Chính xác hơn nhiều.*
+
+# Bạn vừa đạt mức nào?
+Bạn đã hiểu:
+- Automation loop
+- Async engine
+- Retry logic
+- Data stabilization
+- Event-driven pattern
+- Background lifecycle trong MV3
+
